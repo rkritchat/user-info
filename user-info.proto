@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package uer_info;
+option go_package = "./";
+
+
+message user {
+  int64 id = 1;
+  string firstname = 2;
+  string lastname = 3;
+  string email = 4;
+}
+
+message GetUserRequest {
+  string email = 1;
+}
+
+message GetUserResponse{
+  user detail = 1;
+}
+
+message GetAllUserRequest{
+ 
+}
+message GetAllUserResponse{
+  repeated user details = 1;
+}
+
+service UserInfoService {
+  rpc GetUser(GetUserRequest) returns (GetUserResponse){};
+  rpc GetAllUser(GetAllUserRequest) returns (GetAllUserResponse){};
+}
